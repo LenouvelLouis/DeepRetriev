@@ -53,6 +53,34 @@ class WikipediaConfig:
 
 
 @dataclass
+class EvaluationConfig:
+    dataset_path: str = "./data/eval_dataset.json"
+    results_dir: str = "./data/eval_results"
+    top_k: int = 5
+    llm_judge: bool = True
+    random_seed: int = 42
+
+
+@dataclass
+class ExperimentConfig:
+    mlflow_tracking_uri: str = "./mlruns"
+    experiment_name: str = "raglab_experiments"
+    embedding_models: list[str] = field(default_factory=lambda: [
+        "all-MiniLM-L6-v2",
+        "all-mpnet-base-v2",
+        "BAAI/bge-small-en-v1.5",
+    ])
+    chunking_configs: list[dict] = field(default_factory=lambda: [
+        {"chunk_size": 256, "chunk_overlap": 0},
+        {"chunk_size": 256, "chunk_overlap": 50},
+        {"chunk_size": 512, "chunk_overlap": 64},
+        {"chunk_size": 512, "chunk_overlap": 100},
+        {"chunk_size": 1024, "chunk_overlap": 100},
+        {"chunk_size": 1024, "chunk_overlap": 200},
+    ])
+
+
+@dataclass
 class Config:
     chunk: ChunkConfig = field(default_factory=ChunkConfig)
     embedding: EmbeddingConfig = field(default_factory=EmbeddingConfig)
@@ -60,6 +88,8 @@ class Config:
     ollama: OllamaConfig = field(default_factory=OllamaConfig)
     retrieval: RetrievalConfig = field(default_factory=RetrievalConfig)
     wikipedia: WikipediaConfig = field(default_factory=WikipediaConfig)
+    evaluation: EvaluationConfig = field(default_factory=EvaluationConfig)
+    experiment: ExperimentConfig = field(default_factory=ExperimentConfig)
 
 
 # Singleton — import this everywhere
