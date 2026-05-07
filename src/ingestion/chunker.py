@@ -40,7 +40,7 @@ def chunk_document(
     Returns:
         List of Chunk objects ordered by position in the document.
     """
-    chunk_size = chunk_size or config.chunk.size
+    chunk_size = chunk_size if chunk_size is not None else config.chunk.size
     overlap = overlap if overlap is not None else config.chunk.overlap
 
     if chunk_size <= 0:

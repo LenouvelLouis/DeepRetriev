@@ -181,11 +181,11 @@ def main() -> None:
         _save_results(chunk_results, args.results_dir, "chunking")
 
     if log_to_mlflow:
-        print("\n✓ Experiments complete. View results with:")
+        print("\nExperiments complete. View results with:")
         print("    mlflow ui")
         print("  Then open http://localhost:5000 in your browser.\n")
     else:
-        print("\n✓ Experiments complete. Results saved to", args.results_dir)
+        print("\nExperiments complete. Results saved to", args.results_dir)
 
 
 def _print_summary(results: dict) -> None:

@@ -4,7 +4,7 @@ A minimal, from-scratch **Retrieval-Augmented Generation** pipeline built for
 learning and portfolio purposes. Every component is explicit and replaceable —
 no LangChain, no magic.
 
-Phase 1 corpus: 10 Wikipedia articles on renewable energy.
+Corpus: 10 Wikipedia articles on renewable energy.
 
 ---
 
@@ -29,6 +29,19 @@ Phase 1 corpus: 10 Wikipedia articles on renewable energy.
 │                                                                 │
 │                                          Answer + Sources       │
 └─────────────────────────────────────────────────────────────────┘
+                                                    │
+                                                    │ Phase 2
+                                                    ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                       EVALUATION                                │
+│                                                                 │
+│  Eval dataset  ──►  Retrieval metrics  ──►  LLM-as-judge       │
+│  (45 Q/A pairs)    (Recall@k, MRR,       (Faithfulness,       │
+│                     Precision@k)          Relevancy, Ctx Prec) │
+│                                                                 │
+│  Experiments: 3 embedding models × 6 chunking configs          │
+│  Tracking: MLflow    Notebook: experiments.ipynb                │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -47,8 +60,8 @@ Phase 1 corpus: 10 Wikipedia articles on renewable energy.
 
 ```bash
 # 1. Clone
-git clone https://github.com/your-username/raglab.git
-cd raglab
+git clone https://github.com/LenouvelLouis/DeepRetriev.git
+cd DeepRetriev
 
 # 2. Create venv + install dependencies
 make install
@@ -90,6 +103,34 @@ python main.py query "What are the environmental impacts of wind farms?" --top-k
 
 ---
 
+## Phase 2 — Experiments
+
+Run the experiment suite to compare embedding models and chunking configurations:
+
+```bash
+# Compare 3 embedding models
+python run_experiments.py --experiment embeddings
+
+# Compare 6 chunking configurations
+python run_experiments.py --experiment chunking
+
+# Run all experiments
+python run_experiments.py --experiment all
+
+# Evaluate current config only (no re-indexing)
+python run_experiments.py --evaluate
+
+# Enable LLM-as-judge generation metrics (requires Ollama running)
+python run_experiments.py --experiment all --llm-judge
+
+# View results in MLflow
+mlflow ui
+```
+
+Then open `notebooks/experiments.ipynb` for visualisations and analysis.
+
+---
+
 ## Configuration
 
 All parameters live in `src/config.py`. Key settings:
@@ -116,6 +157,9 @@ All parameters live in `src/config.py`. Key settings:
 | Embeddings | `sentence-transformers` — `all-MiniLM-L6-v2` |
 | Vector store | `chromadb` (persistent, local) |
 | LLM | Ollama (`mistral` / `llama3`) via REST API |
+| Evaluation | custom metrics + LLM-as-judge |
+| Experiment tracking | MLflow |
+| Visualisation | matplotlib, seaborn, pandas |
 | CLI | `argparse` |
 | Tests | `pytest` |
 
@@ -133,11 +177,21 @@ raglab/
 │   │   └── indexer.py       # embedding + ChromaDB upsert
 │   ├── retrieval/
 │   │   └── retriever.py     # semantic search
-│   └── generation/
-│       ├── prompt.py        # RAG prompt template
-│       └── generator.py     # Ollama REST call
+│   ├── generation/
+│   │   ├── prompt.py        # RAG prompt template
+│   │   └── generator.py     # Ollama REST call
+│   └── evaluation/
+│       ├── dataset.py       # eval dataset loading & validation
+│       ├── evaluator.py     # retrieval & generation metrics
+│       ├── experiments.py   # embedding & chunking experiments
+│       └── tracking.py      # MLflow wrapper
+├── data/
+│   └── eval_dataset.json    # 45 Q/A evaluation pairs
+├── notebooks/
+│   └── experiments.ipynb    # analysis & visualisations
 ├── tests/
 │   └── test_ingestion.py
+├── run_experiments.py       # experiment orchestrator CLI
 ├── main.py                  # CLI entry point
 ├── requirements.txt
 ├── Makefile
@@ -148,7 +202,7 @@ raglab/
 
 ## Roadmap
 
-- **Phase 2** — experimentation: swap embeddings, chunk sizes, top-k; measure
-  retrieval quality with recall@k and MRR.
-- **Phase 3** — advanced chunking: sentence-aware, recursive, semantic splitting.
-- **Phase 4** — evaluation harness with a labelled QA dataset.
+- [x] **Phase 1** — Foundations: ingestion, chunking, embedding, retrieval, generation CLI.
+- [x] **Phase 2** — Data Science: evaluation dataset, metrics framework, embedding & chunking experiments, MLflow tracking, analysis notebook.
+- [ ] **Phase 3** — Serving: FastAPI, Docker, monitoring, CI/CD.
+- [ ] **Phase 4** — Bonus: hybrid search, re-ranker, Streamlit UI, incremental ingestion.
