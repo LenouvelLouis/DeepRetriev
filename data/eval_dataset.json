@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "question": "What is the most widely used form of renewable energy worldwide?",
+    "expected_answer": "Hydropower is the most widely used form of renewable energy worldwide.",
+    "expected_sources": ["Renewable energy", "Hydropower"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 2,
+    "question": "How do solar photovoltaic cells convert sunlight into electricity?",
+    "expected_answer": "Solar photovoltaic cells use the photovoltaic effect to convert sunlight directly into electricity using semiconductor materials.",
+    "expected_sources": ["Photovoltaic system", "Solar energy"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 3,
+    "question": "What is the main component of a wind turbine that generates electricity?",
+    "expected_answer": "The generator, driven by the rotation of the turbine blades through a shaft and gearbox, is the main component that generates electricity.",
+    "expected_sources": ["Wind power"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 4,
+    "question": "What is geothermal energy?",
+    "expected_answer": "Geothermal energy is thermal energy generated and stored in the Earth, harnessed from heat within the Earth's interior.",
+    "expected_sources": ["Geothermal energy"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 5,
+    "question": "What is biomass energy derived from?",
+    "expected_answer": "Biomass energy is derived from organic materials such as plant matter, wood, agricultural residues, and animal waste.",
+    "expected_sources": ["Biomass energy"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 6,
+    "question": "How does tidal power generate electricity?",
+    "expected_answer": "Tidal power generates electricity by harnessing the kinetic energy of tidal movements, typically using tidal barrages, tidal stream generators, or tidal lagoons.",
+    "expected_sources": ["Tidal power"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 7,
+    "question": "What is wave power?",
+    "expected_answer": "Wave power is the capture of energy from ocean surface waves to generate electricity or perform useful work.",
+    "expected_sources": ["Wave power"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 8,
+    "question": "What types of energy storage technologies exist?",
+    "expected_answer": "Energy storage technologies include batteries, pumped-storage hydroelectricity, compressed air, flywheels, thermal storage, and hydrogen storage.",
+    "expected_sources": ["Energy storage"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 9,
+    "question": "What is the typical efficiency range of commercial solar panels?",
+    "expected_answer": "Commercial solar panels typically have an efficiency range of 15% to 22%, with some high-end panels exceeding 22%.",
+    "expected_sources": ["Photovoltaic system", "Solar energy"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 10,
+    "question": "What is a hydroelectric dam?",
+    "expected_answer": "A hydroelectric dam is a structure built across a river to create a reservoir, using the potential energy of stored water to drive turbines and generate electricity.",
+    "expected_sources": ["Hydropower"],
+    "difficulty": "easy"
+  },
+  {
+    "id": 11,
+    "question": "What is the difference between onshore and offshore wind farms?",
+    "expected_answer": "Onshore wind farms are located on land, while offshore wind farms are built in bodies of water, typically the ocean. Offshore farms benefit from stronger and more consistent winds but are more expensive to build and maintain.",
+    "expected_sources": ["Wind power"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 12,
+    "question": "How does pumped-storage hydroelectricity work?",
+    "expected_answer": "Pumped-storage hydroelectricity works by pumping water to a higher elevation reservoir during low-demand periods and releasing it through turbines during peak demand to generate electricity.",
+    "expected_sources": ["Energy storage", "Hydropower"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 13,
+    "question": "What are the environmental impacts of wind power?",
+    "expected_answer": "Environmental impacts of wind power include bird and bat mortality, noise pollution, visual impact on landscapes, and land use, though it produces no direct greenhouse gas emissions during operation.",
+    "expected_sources": ["Wind power"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 14,
+    "question": "What is the difference between monocrystalline and polycrystalline solar panels?",
+    "expected_answer": "Monocrystalline panels are made from a single crystal structure and are more efficient but more expensive, while polycrystalline panels are made from multiple crystal fragments and are cheaper but slightly less efficient.",
+    "expected_sources": ["Photovoltaic system", "Solar energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 15,
+    "question": "What are the advantages of geothermal energy over solar and wind?",
+    "expected_answer": "Geothermal energy provides a constant baseload power supply regardless of weather conditions, unlike solar and wind which are intermittent. It also has a small land footprint and can operate 24/7.",
+    "expected_sources": ["Geothermal energy", "Renewable energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 16,
+    "question": "How is biomass converted into biofuel?",
+    "expected_answer": "Biomass can be converted into biofuel through processes such as fermentation (producing ethanol), transesterification (producing biodiesel), pyrolysis, and gasification.",
+    "expected_sources": ["Biomass energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 17,
+    "question": "What is the capacity factor of wind turbines compared to solar panels?",
+    "expected_answer": "Wind turbines typically have a capacity factor of 25-45%, while solar panels have a capacity factor of 10-25%, meaning wind turbines generally produce a higher percentage of their rated output over time.",
+    "expected_sources": ["Wind power", "Solar energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 18,
+    "question": "What role does energy storage play in integrating renewable energy into the grid?",
+    "expected_answer": "Energy storage helps balance supply and demand by storing excess energy during high production periods and releasing it during low production or high demand, addressing the intermittency of renewable sources like solar and wind.",
+    "expected_sources": ["Energy storage", "Renewable energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 19,
+    "question": "What is a tidal barrage and how does it differ from a tidal stream generator?",
+    "expected_answer": "A tidal barrage is a dam-like structure across a tidal estuary that captures water at high tide and releases it through turbines. A tidal stream generator works like an underwater wind turbine, using tidal currents directly without damming the waterway.",
+    "expected_sources": ["Tidal power"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 20,
+    "question": "What are the main challenges of wave energy technology?",
+    "expected_answer": "Main challenges include the harsh marine environment causing equipment damage, high costs of offshore construction and maintenance, difficulty in efficiently converting irregular wave motion into electricity, and grid connection from offshore locations.",
+    "expected_sources": ["Wave power"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 21,
+    "question": "How does the levelized cost of energy (LCOE) of solar compare to fossil fuels?",
+    "expected_answer": "The LCOE of solar energy has dropped significantly and is now competitive with or cheaper than many fossil fuel sources in many regions, driven by declining panel costs and improved efficiency.",
+    "expected_sources": ["Solar energy", "Renewable energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 22,
+    "question": "What is net metering in the context of solar energy?",
+    "expected_answer": "Net metering is a billing mechanism that credits solar energy system owners for the electricity they feed back into the grid, allowing them to offset the cost of electricity drawn from the grid.",
+    "expected_sources": ["Solar energy", "Photovoltaic system"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 23,
+    "question": "What are the different types of hydropower plants?",
+    "expected_answer": "The main types are conventional (dammed) hydropower, run-of-river hydropower which uses the natural flow of water with minimal storage, and pumped-storage hydropower which stores energy by pumping water to a higher reservoir.",
+    "expected_sources": ["Hydropower"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 24,
+    "question": "What is the role of lithium-ion batteries in renewable energy storage?",
+    "expected_answer": "Lithium-ion batteries are widely used for renewable energy storage due to their high energy density, relatively long cycle life, and decreasing costs. They are used at both utility scale and residential scale to store solar and wind energy.",
+    "expected_sources": ["Energy storage"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 25,
+    "question": "What are the geographic limitations of geothermal energy?",
+    "expected_answer": "Geothermal energy is most accessible near tectonic plate boundaries, volcanic regions, and areas with high geothermal gradients. Most of the world's geothermal capacity is concentrated in countries like Iceland, the United States, the Philippines, and Indonesia.",
+    "expected_sources": ["Geothermal energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 26,
+    "question": "How do solar and wind energy complement each other in a renewable energy mix?",
+    "expected_answer": "Solar and wind often complement each other because solar production peaks during daytime while wind is often stronger at night and during winter. Combining them reduces overall intermittency and provides more consistent power generation throughout the day and year.",
+    "expected_sources": ["Solar energy", "Wind power", "Renewable energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 27,
+    "question": "What is the relationship between energy storage capacity and renewable energy grid penetration?",
+    "expected_answer": "Higher energy storage capacity enables higher renewable energy grid penetration by smoothing out intermittent generation, reducing curtailment, and providing grid services like frequency regulation. Without adequate storage, high renewable penetration leads to grid instability.",
+    "expected_sources": ["Energy storage", "Renewable energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 28,
+    "question": "Compare the environmental footprints of hydropower, wind, and solar energy across their full lifecycle.",
+    "expected_answer": "Hydropower has significant land use and ecosystem impacts from reservoirs but very low operational emissions. Wind has bird/bat mortality and visual impact but low lifecycle emissions. Solar requires land and energy-intensive manufacturing but has minimal operational impact. All three have much lower lifecycle carbon emissions than fossil fuels.",
+    "expected_sources": ["Hydropower", "Wind power", "Solar energy", "Renewable energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 29,
+    "question": "How could wave and tidal energy contribute to baseload power generation?",
+    "expected_answer": "Tidal energy is highly predictable due to the regularity of tidal cycles, making it suitable for baseload contribution. Wave energy, while less predictable than tidal, is more consistent than solar or wind. Together they could provide a reliable marine energy baseload, especially when combined with energy storage.",
+    "expected_sources": ["Tidal power", "Wave power", "Energy storage"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 30,
+    "question": "What are the technical challenges of scaling up geothermal energy using enhanced geothermal systems (EGS)?",
+    "expected_answer": "EGS challenges include drilling deep wells in hard rock, creating artificial fracture networks underground, managing induced seismicity, maintaining reservoir permeability over time, and high upfront capital costs. Water usage and potential contamination are also concerns.",
+    "expected_sources": ["Geothermal energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 31,
+    "question": "How does the intermittency of renewable energy sources affect grid stability, and what solutions exist?",
+    "expected_answer": "Intermittency causes mismatches between supply and demand, potentially leading to frequency and voltage fluctuations. Solutions include energy storage, demand response, grid interconnections, flexible conventional generation, forecasting improvements, and smart grid technology.",
+    "expected_sources": ["Renewable energy", "Energy storage"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 32,
+    "question": "What is the water-energy nexus in the context of renewable energy production?",
+    "expected_answer": "The water-energy nexus refers to the interdependence between water and energy systems. Hydropower directly depends on water, biomass production requires irrigation, and geothermal plants consume water for cooling. Solar PV and wind have minimal water needs, making them advantageous in water-scarce regions.",
+    "expected_sources": ["Hydropower", "Geothermal energy", "Biomass energy", "Solar energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 33,
+    "question": "How do feed-in tariffs and renewable portfolio standards differ in promoting renewable energy adoption?",
+    "expected_answer": "Feed-in tariffs guarantee a fixed price for renewable energy fed into the grid, providing revenue certainty for producers. Renewable portfolio standards mandate that a minimum percentage of electricity must come from renewable sources. FITs directly incentivize producers while RPS creates a market obligation.",
+    "expected_sources": ["Renewable energy", "Solar energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 34,
+    "question": "What is the potential of hybrid renewable energy systems that combine multiple sources?",
+    "expected_answer": "Hybrid systems combining solar, wind, and storage can provide more reliable power by leveraging the complementary generation profiles of different sources. They reduce intermittency, improve capacity factors, and can lower the overall cost of energy compared to single-source systems.",
+    "expected_sources": ["Renewable energy", "Solar energy", "Wind power", "Energy storage"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 35,
+    "question": "How does biomass energy compare to other renewables in terms of carbon neutrality?",
+    "expected_answer": "Biomass is considered carbon-neutral in theory because CO2 released during combustion was absorbed during plant growth. However, the full lifecycle including harvesting, transportation, and processing means it is not truly zero-emission. It has higher lifecycle emissions than solar, wind, or hydropower.",
+    "expected_sources": ["Biomass energy", "Renewable energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 36,
+    "question": "What are thin-film solar cells and what advantages do they offer?",
+    "expected_answer": "Thin-film solar cells are made by depositing thin layers of photovoltaic material on a substrate. They are lighter, flexible, cheaper to manufacture, and perform better in low-light conditions, but are generally less efficient than crystalline silicon panels.",
+    "expected_sources": ["Photovoltaic system", "Solar energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 37,
+    "question": "What is the Betz limit in wind energy?",
+    "expected_answer": "The Betz limit states that no wind turbine can capture more than 59.3% of the kinetic energy in wind. This theoretical maximum efficiency applies to all wind turbines regardless of design.",
+    "expected_sources": ["Wind power"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 38,
+    "question": "How do small-scale hydropower systems differ from large dams?",
+    "expected_answer": "Small-scale or micro hydropower systems typically generate less than 100 kW and use run-of-river designs with minimal environmental impact. Large dams create reservoirs, have much higher generation capacity, but cause significant ecosystem disruption and displacement.",
+    "expected_sources": ["Hydropower"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 39,
+    "question": "What role does hydrogen play as an energy storage medium for renewable energy?",
+    "expected_answer": "Hydrogen can store renewable energy by using excess electricity to produce hydrogen via electrolysis. The hydrogen can later be converted back to electricity via fuel cells or burned directly. It enables long-duration seasonal storage and sector coupling with transport and industry.",
+    "expected_sources": ["Energy storage", "Renewable energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 40,
+    "question": "What is concentrated solar power (CSP) and how does it differ from photovoltaic solar?",
+    "expected_answer": "CSP uses mirrors or lenses to concentrate sunlight onto a receiver to produce heat, which drives a steam turbine. Unlike PV which directly converts light to electricity, CSP uses thermal energy and can integrate thermal storage for power generation after sunset.",
+    "expected_sources": ["Solar energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 41,
+    "question": "What are the main barriers to widespread adoption of renewable energy globally?",
+    "expected_answer": "Main barriers include intermittency and storage challenges, high upfront capital costs, grid infrastructure limitations, policy and regulatory uncertainty, fossil fuel subsidies, land use conflicts, and in some cases public opposition.",
+    "expected_sources": ["Renewable energy"],
+    "difficulty": "medium"
+  },
+  {
+    "id": 42,
+    "question": "How does the energy return on investment (EROI) vary across different renewable energy sources?",
+    "expected_answer": "Hydropower typically has the highest EROI (over 100:1), followed by wind (18-20:1). Solar PV has an EROI of about 10-15:1 and is improving. Biomass has a lower EROI (3-5:1) due to energy-intensive cultivation and processing. Geothermal ranges from 5-10:1.",
+    "expected_sources": ["Renewable energy", "Hydropower", "Wind power", "Solar energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 43,
+    "question": "What are the social and economic impacts of transitioning to renewable energy?",
+    "expected_answer": "The transition creates new jobs in manufacturing, installation, and maintenance of renewable systems while displacing fossil fuel jobs. It can reduce energy costs long-term, improve energy independence, reduce health costs from air pollution, but requires significant investment in retraining and infrastructure.",
+    "expected_sources": ["Renewable energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 44,
+    "question": "How do ocean thermal energy conversion systems work?",
+    "expected_answer": "Ocean thermal energy conversion (OTEC) exploits the temperature difference between warm surface water and cold deep ocean water to drive a heat engine and generate electricity. It requires a temperature differential of at least 20 degrees Celsius to be viable.",
+    "expected_sources": ["Wave power", "Renewable energy"],
+    "difficulty": "hard"
+  },
+  {
+    "id": 45,
+    "question": "What is the global installed capacity of solar energy?",
+    "expected_answer": "Global installed solar capacity has grown rapidly, exceeding 1 terawatt (TW) of cumulative installed photovoltaic capacity, with China, the United States, and India among the leading countries.",
+    "expected_sources": ["Solar energy", "Photovoltaic system"],
+    "difficulty": "easy"
+  }
+]

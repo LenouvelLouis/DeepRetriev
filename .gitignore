@@ -4,13 +4,14 @@ venv/
 env/
 
 # Data (corpus + vector store)
-data/
+data/chroma/
+data/eval_results/
 
 # Python bytecode
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
 *.pyd
+*.egg-info/
 
 # Test / coverage artifacts
 .pytest_cache/
@@ -21,7 +22,17 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
+# MLflow
+mlruns/
+
+# Environment
+.env
+
 # IDE
 .vscode/
 .idea/
 *.swp
+/.claude/
+
+# Docker
+docker-compose.override.yml

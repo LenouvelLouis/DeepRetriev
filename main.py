@@ -99,6 +99,22 @@ def cmd_query(args: argparse.Namespace) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Serve command
+# ---------------------------------------------------------------------------
+
+def cmd_serve(args: argparse.Namespace) -> None:
+    """Start the FastAPI server via uvicorn."""
+    import uvicorn
+    from src.api.app import create_app
+
+    app = create_app()
+    logger.info(
+        "Starting RAGLab API server on %s:%d", args.host, args.port
+    )
+    uvicorn.run(app, host=args.host, port=args.port)
+
+
+# ---------------------------------------------------------------------------
 # Argument parser
 # ---------------------------------------------------------------------------
 
@@ -128,6 +144,21 @@ def build_parser() -> argparse.ArgumentParser:
         help="Number of context chunks to retrieve (default: from config)",
     )
 
+    # serve
+    serve_parser = subparsers.add_parser("serve", help="Start the FastAPI server")
+    serve_parser.add_argument(
+        "--host",
+        type=str,
+        default="0.0.0.0",
+        help="Bind host (default: 0.0.0.0)",
+    )
+    serve_parser.add_argument(
+        "--port",
+        type=int,
+        default=8000,
+        help="Bind port (default: 8000)",
+    )
+
     return parser
 
 
@@ -138,6 +169,7 @@ def main() -> None:
     dispatch = {
         "ingest": cmd_ingest,
         "query": cmd_query,
+        "serve": cmd_serve,
     }
     dispatch[args.command](args)
 

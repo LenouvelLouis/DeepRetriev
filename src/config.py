@@ -1,5 +1,6 @@
 """Centralized configuration for RAGLab."""
 
+import os
 from dataclasses import dataclass, field
 
 
@@ -18,13 +19,13 @@ class EmbeddingConfig:
 @dataclass
 class ChromaConfig:
     collection_name: str = "raglab"
-    persist_directory: str = "./data/chroma"
+    persist_directory: str = field(default_factory=lambda: os.getenv("CHROMA_PERSIST_DIR", "./data/chroma"))
 
 
 @dataclass
 class OllamaConfig:
-    base_url: str = "http://localhost:11434"
-    model: str = "mistral"
+    base_url: str = field(default_factory=lambda: os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"))
+    model: str = field(default_factory=lambda: os.getenv("OLLAMA_MODEL", "mistral"))
     temperature: float = 0.2
     num_ctx: int = 4096
 
@@ -63,7 +64,7 @@ class EvaluationConfig:
 
 @dataclass
 class ExperimentConfig:
-    mlflow_tracking_uri: str = "./mlruns"
+    mlflow_tracking_uri: str = field(default_factory=lambda: os.getenv("MLFLOW_TRACKING_URI", "./mlruns"))
     experiment_name: str = "raglab_experiments"
     embedding_models: list[str] = field(default_factory=lambda: [
         "all-MiniLM-L6-v2",
