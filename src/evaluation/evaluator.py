@@ -12,7 +12,7 @@ import requests
 from tqdm import tqdm
 
 from src.config import config
-from src.evaluation.dataset import EvalSample, load_dataset
+from src.evaluation.dataset import EvalSample
 from src.generation.generator import generate_answer
 from src.retrieval.retriever import RetrievedChunk, Retriever
 

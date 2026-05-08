@@ -36,12 +36,11 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - mlflow-data:/mlflow
-    command: mlflow ui --host 0.0.0.0 --backend-store-uri /mlflow
+      - ./mlruns:/mlruns
+    command: mlflow ui --host 0.0.0.0 --backend-store-uri file:///mlruns
     restart: unless-stopped
 
 volumes:
   app-data:
   ollama-models:
   chroma-data:
-  mlflow-data:
