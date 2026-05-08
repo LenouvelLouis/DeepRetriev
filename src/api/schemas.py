@@ -20,6 +20,7 @@ class IngestRequest(BaseModel):
 
     topics: list[str] | None = None  # defaults to config.wikipedia.topics
     reset: bool = False
+    incremental: bool = True  # skip already-indexed documents
 
 
 class EvalRequest(BaseModel):
@@ -58,6 +59,7 @@ class IngestResponse(BaseModel):
 
     status: str
     documents_loaded: int
+    documents_skipped: int = 0
     chunks_indexed: int
     collection: str
 

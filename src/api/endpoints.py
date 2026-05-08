@@ -56,6 +56,16 @@ async def query(req: QueryRequest) -> QueryResponse:
             detail="No relevant chunks found. You may need to ingest documents first.",
         )
 
+    # Re-ranking
+    if config.retrieval.use_reranker:
+        from src.retrieval.reranker import Reranker
+
+        reranker = Reranker()
+        chunks = await loop.run_in_executor(
+            None,
+            partial(reranker.rerank, req.question, chunks, top_k=config.retrieval.reranker_top_k),
+        )
+
     # Generation
     t_gen_start = time.perf_counter()
     try:
@@ -100,7 +110,7 @@ async def query(req: QueryRequest) -> QueryResponse:
 async def ingest(req: IngestRequest) -> IngestResponse:
     """Load Wikipedia pages, chunk, embed, and index into ChromaDB."""
     from src.ingestion.chunker import chunk_documents
-    from src.ingestion.indexer import get_collection_stats, index_chunks
+    from src.ingestion.indexer import get_collection_stats, get_indexed_doc_ids, index_chunks
     from src.ingestion.loader import load_wikipedia_pages
 
     loop = asyncio.get_running_loop()
@@ -121,6 +131,26 @@ async def ingest(req: IngestRequest) -> IngestResponse:
             detail="No documents were loaded. Check topics or network connectivity.",
         )
 
+    # Incremental mode: skip already-indexed documents (unless reset)
+    documents_skipped = 0
+    if req.incremental and not req.reset:
+        existing_ids = await loop.run_in_executor(None, get_indexed_doc_ids)
+        total_before = len(documents)
+        documents = [d for d in documents if d.doc_id not in existing_ids]
+        documents_skipped = total_before - len(documents)
+        if documents_skipped:
+            logger.info("Incremental mode: skipped %d already-indexed documents", documents_skipped)
+
+    if not documents:
+        stats = get_collection_stats()
+        return IngestResponse(
+            status="success",
+            documents_loaded=0,
+            documents_skipped=documents_skipped,
+            chunks_indexed=0,
+            collection=stats["collection"],
+        )
+
     try:
         chunks = await loop.run_in_executor(
             None, partial(chunk_documents, documents)
@@ -137,6 +167,7 @@ async def ingest(req: IngestRequest) -> IngestResponse:
     return IngestResponse(
         status="success",
         documents_loaded=len(documents),
+        documents_skipped=documents_skipped,
         chunks_indexed=len(chunks),
         collection=stats["collection"],
     )

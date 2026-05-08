@@ -176,7 +176,8 @@ raglab/
 │   │   ├── chunker.py       # character-level chunking
 │   │   └── indexer.py       # embedding + ChromaDB upsert
 │   ├── retrieval/
-│   │   └── retriever.py     # semantic search
+│   │   ├── retriever.py     # semantic + hybrid (BM25/cosine RRF) search
+│   │   └── reranker.py      # cross-encoder re-ranking
 │   ├── generation/
 │   │   ├── prompt.py        # RAG prompt template
 │   │   └── generator.py     # Ollama REST call
@@ -185,11 +186,13 @@ raglab/
 │   │   ├── evaluator.py     # retrieval & generation metrics
 │   │   ├── experiments.py   # embedding & chunking experiments
 │   │   └── tracking.py      # MLflow wrapper
-│   └── api/
-│       ├── app.py           # FastAPI factory + middleware
-│       ├── endpoints.py     # route handlers (5 endpoints)
-│       ├── schemas.py       # Pydantic request/response models
-│       └── metrics.py       # in-process metrics collector
+│   ├── api/
+│   │   ├── app.py           # FastAPI factory + middleware
+│   │   ├── endpoints.py     # route handlers (5 endpoints)
+│   │   ├── schemas.py       # Pydantic request/response models
+│   │   └── metrics.py       # in-process metrics collector
+│   └── ui/
+│       └── app.py           # Streamlit interactive UI
 ├── data/
 │   └── eval_dataset.json    # 45 Q/A evaluation pairs
 ├── notebooks/
@@ -215,4 +218,4 @@ raglab/
 - [x] **Phase 1** — Foundations: ingestion, chunking, embedding, retrieval, generation CLI.
 - [x] **Phase 2** — Data Science: evaluation dataset, metrics framework, embedding & chunking experiments, MLflow tracking, analysis notebook.
 - [x] **Phase 3** — Serving: FastAPI, Docker, monitoring, CI/CD.
-- [ ] **Phase 4** — Bonus: hybrid search, re-ranker, Streamlit UI, incremental ingestion.
+- [x] **Phase 4** — Bonus: hybrid search (BM25 + RRF), cross-encoder re-ranker, Streamlit UI, incremental ingestion.

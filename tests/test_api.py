@@ -115,14 +115,18 @@ class TestQuery:
         assert response.status_code == 422
 
     @patch("src.generation.generator.generate_answer", return_value="Mocked answer")
+    @patch("src.retrieval.reranker.Reranker.rerank")
     @patch("src.retrieval.retriever.Retriever.retrieve")
     async def test_query_valid_request_structure(
         self,
         mock_retrieve: MagicMock,
+        mock_rerank: MagicMock,
         mock_generate: MagicMock,
         client: AsyncClient,
     ) -> None:
-        mock_retrieve.return_value = _fake_chunks(3)
+        fake = _fake_chunks(3)
+        mock_retrieve.return_value = fake
+        mock_rerank.return_value = fake
 
         response = await client.post(
             "/query", json={"question": "What is solar energy?"}

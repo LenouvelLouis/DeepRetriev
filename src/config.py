@@ -34,6 +34,12 @@ class OllamaConfig:
 class RetrievalConfig:
     top_k: int = 5
     score_threshold: float = 0.0
+    use_hybrid: bool = True
+    bm25_weight: float = 0.5  # 0.0 = pure semantic, 1.0 = pure BM25
+    rrf_k: int = 60  # RRF constant
+    use_reranker: bool = True
+    reranker_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    reranker_top_k: int = 3
 
 
 @dataclass

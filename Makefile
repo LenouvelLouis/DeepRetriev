@@ -1,4 +1,4 @@
-.PHONY: install ingest query test clean
+.PHONY: install ingest query test clean streamlit
 
 VENV     := .venv
 PYTHON   := $(VENV)/Scripts/python
@@ -33,6 +33,11 @@ endif
 
 test:
 	$(PYTHON) -m pytest tests/ -v
+
+# ── UI ───────────────────────────────────────────────────────────────────────
+
+streamlit:
+	$(PYTHON) -m streamlit run src/ui/app.py
 
 # ── Housekeeping ──────────────────────────────────────────────────────────────
 

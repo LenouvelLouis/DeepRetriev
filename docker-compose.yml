@@ -31,6 +31,23 @@ services:
       - chroma-data:/chroma/chroma
     restart: unless-stopped
 
+  streamlit:
+    build: .
+    ports:
+      - "8501:8501"
+    depends_on:
+      - ollama
+      - chromadb
+    volumes:
+      - app-data:/app/data
+    env_file:
+      - .env
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+    command: ["python", "-m", "streamlit", "run", "src/ui/app.py", "--server.address", "0.0.0.0", "--server.port", "8501"]
+    restart: unless-stopped
+
   mlflow:
     image: ghcr.io/mlflow/mlflow
     ports:

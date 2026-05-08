@@ -99,6 +99,16 @@ def index_chunks(chunks: list[Chunk], reset: bool = False) -> None:
     )
 
 
+def get_indexed_doc_ids() -> set[str]:
+    """Return the set of doc_ids already present in ChromaDB."""
+    client = _get_chroma_client()
+    collection = _get_or_create_collection(client)
+    if collection.count() == 0:
+        return set()
+    all_meta = collection.get(include=["metadatas"])
+    return {m["doc_id"] for m in all_meta["metadatas"] if "doc_id" in m}
+
+
 def get_collection_stats() -> dict:
     """Return basic stats about the current ChromaDB collection.
 

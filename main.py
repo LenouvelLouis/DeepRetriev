@@ -28,7 +28,7 @@ def cmd_ingest(args: argparse.Namespace) -> None:
     """Load Wikipedia pages, chunk, embed, and store in ChromaDB."""
     from src.ingestion.loader import load_wikipedia_pages
     from src.ingestion.chunker import chunk_documents
-    from src.ingestion.indexer import index_chunks, get_collection_stats
+    from src.ingestion.indexer import index_chunks, get_collection_stats, get_indexed_doc_ids
 
     logger.info("=== RAGLab — Ingestion ===")
 
@@ -37,14 +37,36 @@ def cmd_ingest(args: argparse.Namespace) -> None:
         logger.error("No documents loaded. Check your internet connection or topic list.")
         sys.exit(1)
 
+    # Incremental mode: skip already-indexed documents (unless --reset)
+    documents_skipped = 0
+    if not args.reset:
+        existing_ids = get_indexed_doc_ids()
+        total_before = len(documents)
+        documents = [d for d in documents if d.doc_id not in existing_ids]
+        documents_skipped = total_before - len(documents)
+        if documents_skipped:
+            logger.info("Incremental mode: skipped %d already-indexed documents", documents_skipped)
+
+    if not documents:
+        stats = get_collection_stats()
+        logger.info(
+            "Nothing new to index. Collection '%s' already contains %d chunks (%d documents skipped).",
+            stats["collection"],
+            stats["count"],
+            documents_skipped,
+        )
+        return
+
     chunks = chunk_documents(documents)
     index_chunks(chunks, reset=args.reset)
 
     stats = get_collection_stats()
     logger.info(
-        "Done. Collection '%s' now contains %d chunks.",
+        "Done. Collection '%s' now contains %d chunks (loaded %d, skipped %d).",
         stats["collection"],
         stats["count"],
+        len(documents),
+        documents_skipped,
     )
 
 
