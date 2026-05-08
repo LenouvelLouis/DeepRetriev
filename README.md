@@ -180,19 +180,29 @@ raglab/
 │   ├── generation/
 │   │   ├── prompt.py        # RAG prompt template
 │   │   └── generator.py     # Ollama REST call
-│   └── evaluation/
-│       ├── dataset.py       # eval dataset loading & validation
-│       ├── evaluator.py     # retrieval & generation metrics
-│       ├── experiments.py   # embedding & chunking experiments
-│       └── tracking.py      # MLflow wrapper
+│   ├── evaluation/
+│   │   ├── dataset.py       # eval dataset loading & validation
+│   │   ├── evaluator.py     # retrieval & generation metrics
+│   │   ├── experiments.py   # embedding & chunking experiments
+│   │   └── tracking.py      # MLflow wrapper
+│   └── api/
+│       ├── app.py           # FastAPI factory + middleware
+│       ├── endpoints.py     # route handlers (5 endpoints)
+│       ├── schemas.py       # Pydantic request/response models
+│       └── metrics.py       # in-process metrics collector
 ├── data/
 │   └── eval_dataset.json    # 45 Q/A evaluation pairs
 ├── notebooks/
 │   └── experiments.ipynb    # analysis & visualisations
 ├── tests/
-│   └── test_ingestion.py
+│   ├── test_ingestion.py
+│   ├── test_evaluation.py
+│   └── test_api.py          # async API integration tests
 ├── run_experiments.py       # experiment orchestrator CLI
 ├── main.py                  # CLI entry point
+├── Dockerfile               # multi-stage production build
+├── docker-compose.yml       # api + ollama + chromadb + mlflow
+├── .github/workflows/ci.yml # lint, test, docker build
 ├── requirements.txt
 ├── Makefile
 └── .gitignore
@@ -204,5 +214,5 @@ raglab/
 
 - [x] **Phase 1** — Foundations: ingestion, chunking, embedding, retrieval, generation CLI.
 - [x] **Phase 2** — Data Science: evaluation dataset, metrics framework, embedding & chunking experiments, MLflow tracking, analysis notebook.
-- [ ] **Phase 3** — Serving: FastAPI, Docker, monitoring, CI/CD.
+- [x] **Phase 3** — Serving: FastAPI, Docker, monitoring, CI/CD.
 - [ ] **Phase 4** — Bonus: hybrid search, re-ranker, Streamlit UI, incremental ingestion.

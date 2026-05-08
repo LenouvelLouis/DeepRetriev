@@ -181,3 +181,32 @@ class TestEvaluate:
     async def test_evaluate_requires_valid_top_k(self, client: AsyncClient) -> None:
         response = await client.post("/evaluate", json={"top_k": 0})
         assert response.status_code == 422
+
+    @patch("src.evaluation.evaluator.RAGEvaluator")
+    @patch("src.retrieval.retriever.Retriever")
+    @patch("src.evaluation.dataset.load_dataset")
+    async def test_evaluate_happy_path(
+        self,
+        mock_load_dataset: MagicMock,
+        mock_retriever_cls: MagicMock,
+        mock_evaluator_cls: MagicMock,
+        client: AsyncClient,
+    ) -> None:
+        mock_load_dataset.return_value = [MagicMock()]
+        mock_evaluator = mock_evaluator_cls.return_value
+        mock_evaluator.evaluate.return_value = {
+            "global_metrics": {"recall_at_k": 0.8, "mrr": 0.75},
+            "per_difficulty": {"easy": {"recall_at_k": 0.9}},
+            "n_samples": 10,
+            "config": {"top_k": 5, "embedding_model": "all-MiniLM-L6-v2"},
+        }
+
+        response = await client.post("/evaluate", json={"top_k": 5})
+        assert response.status_code == 200
+
+        data = response.json()
+        assert data["n_samples"] == 10
+        assert "global_metrics" in data
+        assert "per_difficulty" in data
+        assert "config" in data
+        assert data["global_metrics"]["recall_at_k"] == 0.8
